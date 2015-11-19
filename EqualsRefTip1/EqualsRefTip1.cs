@@ -21,10 +21,11 @@ namespace Vsite.CSharp
                 return false;
             if (this.GetType() != obj.GetType())
                 return false;
-            // TODO: implementirati metodu Equals tako da za osobe s istim imenom i matičnim brojem rezultat bude true
+            // implementirati metodu Equals tako da za osobe s istim imenom i matičnim brojem rezultat bude true
             // (ako je metoda dobro implementirana, metoda Main bi se trebala izvesti bez problema)
-
-
+            Osoba other = (Osoba)obj;
+            if ((this.m_ime != other.m_ime) || (this.m_matičniBroj != other.m_matičniBroj))
+                return false;
             return true;  // ako je sve prošlo – objekti su jednaki
         }
 
@@ -32,6 +33,8 @@ namespace Vsite.CSharp
         {
             return string.Format("'{0}, {1}'", m_ime, m_matičniBroj);
         }
+
+        public Osoba other { get; set; }
     }
 
     class Program
