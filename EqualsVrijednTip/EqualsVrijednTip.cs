@@ -27,8 +27,12 @@ namespace Vsite.CSharp
         public bool Equals(Osoba obj)
         {
             // TODO: Implementirati tipski sigurnu usporedbu tako da metoda Main prođe bez problema
-
-            return true;
+            if (this.GetType() != obj.GetType())
+                return false;
+            Osoba a = (Osoba)obj;
+            if ((Osoba.Equals(this.m_ime, a.m_ime)) == false)
+                return false;
+            return m_matičniBroj.Equals(a.m_matičniBroj);
         }
 
         public override string ToString()
