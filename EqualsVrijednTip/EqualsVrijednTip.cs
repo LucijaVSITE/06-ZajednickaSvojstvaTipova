@@ -26,7 +26,7 @@ namespace Vsite.CSharp
         // tipski sigurna (type-safe) implementacija
         public bool Equals(Osoba obj)
         {
-            // TODO: Implementirati tipski sigurnu usporedbu tako da metoda Main prođe bez problema
+            // Implementirati tipski sigurnu usporedbu tako da metoda Main prođe bez problema
             if (this.GetType() != obj.GetType())
                 return false;
             Osoba a = (Osoba)obj;
