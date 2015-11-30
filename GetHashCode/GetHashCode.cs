@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GetHashCode
-{
+namespace GetHashCode // možemo definitati tablicu kojij pridružijemo željenu vrijednost uz tablični ključ; ht["nešto"]="something";
+{                       // OBAVEZNO IMPLEMENTIRATI 
     class Osoba
     {
         public Osoba(string ime, int matičniBroj)
@@ -19,13 +19,22 @@ namespace GetHashCode
 
         public override bool Equals(object obj)
         {
-            // TODO: Prekopirati implementaciju metode Equals iz EqualsRefTip1
-
-
-            return true;
+            // Prekopirati implementaciju metode Equals iz EqualsRefTip1
+            if (obj == null)
+                return false;
+            if (this.GetType() != obj.GetType())
+                return false;
+            Osoba a = (Osoba)obj;
+            if ((Osoba.Equals(this.m_ime, a.m_ime)) == false)
+                return false;
+            return m_matičniBroj.Equals(a.m_matičniBroj);
         }
 
-        // TODO: Implementirati metodu GetHashCode tako da se metoda Main može izvesti bez problema
+        // Implementirati metodu GetHashCode tako da se metoda Main može izvesti bez problema
+        public override int GetHashCode()
+        {
+            return m_ime.GetHashCode() ^ m_matičniBroj.GetHashCode();// ^ ekskluzivno or
+        }
 
         
         
