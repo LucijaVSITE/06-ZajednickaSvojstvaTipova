@@ -23,21 +23,40 @@ namespace Vsite.CSharp
 
         public bool Equals(Osoba obj)
         {
-            // TODO: Preslikati implementaciju metode Equals iz EqualsRefTip
+            // Preslikati implementaciju metode Equals iz EqualsRefTip
+            if (this.GetType() != obj.GetType())
+                return false;
+            Osoba a = (Osoba)obj;
+            if ((Osoba.Equals(this.m_ime, a.m_ime)) == false)
+                return false;
+            return m_matičniBroj.Equals(a.m_matičniBroj);
 
-
-            return true;
+  
         }
 
-        // TODO: implementirati operatore == i != tako da se metoda Main izvede bez problema
+        // implementirati operatore == i != tako da se metoda Main izvede bez problema
         public static bool operator ==(Osoba o1, Osoba o2)
         {
-            return true;
+            // If both are null, or both are same instance, return true.
+            if (System.Object.ReferenceEquals(o1, o2))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)o1 == null) || ((object)o2 == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return o1.m_ime == o2.m_ime && o1.m_matičniBroj== o2.m_matičniBroj;
         }
 
         public static bool operator !=(Osoba o1, Osoba o2)
         {
-            return true;
+
+            return !(o1 == o2);
         }
     }
 
