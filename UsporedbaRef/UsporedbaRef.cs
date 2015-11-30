@@ -16,13 +16,40 @@ namespace Vsite.CSharp
 
         public override bool Equals(object obj) 
         {
-            // TODO: Preslikati implementaciju metode iz EqualsRefTip1
-
-            return true;
+            // Preslikati implementaciju metode iz EqualsRefTip1
+            if (obj == null)
+                return false;
+            if (this.GetType() != obj.GetType())
+                return false;
+            Osoba a = (Osoba)obj;
+            if ((Osoba.Equals(this.m_ime, a.m_ime)) == false)
+                return false;
+            return m_matičniBroj.Equals(a.m_matičniBroj);
         }
 
         // TODO: implementirati operatore == i != tako da se metoda Main izvede bez problema
+        public static bool operator ==(Osoba a, Osoba b)
+        {
+            // If both are null, or both are same instance, return true.
+            if (System.Object.ReferenceEquals(a, b))
+            {
+                return true;
+            }
 
+            // If one is null, but not both, return false.
+            if (((object)a == null) || ((object)b == null))
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return a.m_ime == b.m_ime && a.m_matičniBroj == b.m_matičniBroj;
+        }
+
+        public static bool operator !=(Osoba a, Osoba b)
+        {
+            return !(a == b);
+        }
 
         // POGREŠNA IMPLEMENTACIJA (beskonačna rekurzija)
         /*
