@@ -27,7 +27,7 @@ namespace Vsite.CSharp
             return m_matičniBroj.Equals(a.m_matičniBroj);
         }
 
-        // TODO: implementirati operatore == i != tako da se metoda Main izvede bez problema
+        // implementirati operatore == i != tako da se metoda Main izvede bez problema
         public static bool operator ==(Osoba a, Osoba b)
         {
             // If both are null, or both are same instance, return true.
