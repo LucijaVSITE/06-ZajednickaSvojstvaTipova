@@ -17,16 +17,21 @@ namespace Vsite.CSharp
 
         public override bool Equals(object obj)
         {
-            if (obj == null)
+            if (obj == null) // ako neko prosljedi 0 pointer
                 return false;
-            if (this.GetType() != obj.GetType())
+            if (this.GetType() != obj.GetType()) //ako je prosljeđen krivi tip "kruške i jabuke"
                 return false;
             // implementirati metodu Equals tako da za osobe s istim imenom i matičnim brojem rezultat bude true
             // (ako je metoda dobro implementirana, metoda Main bi se trebala izvesti bez problema)
-            Osoba other = (Osoba)obj;
-            if ((this.m_ime != other.m_ime) || (this.m_matičniBroj != other.m_matičniBroj))
+            Osoba a = (Osoba)obj;
+
+            if ((Osoba.Equals(this.m_ime,a.m_ime)) == false) //Kod uspoređivanja paziti da nije null string
                 return false;
-            return true;  // ako je sve prošlo – objekti su jednaki
+
+            return m_matičniBroj.Equals(a.m_matičniBroj);
+            //if ((this.m_ime != a.m_ime) || (this.m_matičniBroj != a.m_matičniBroj))
+                //return false;
+            //return true;  // ako je sve prošlo – objekti su jednaki
         }
 
         public override string ToString()
